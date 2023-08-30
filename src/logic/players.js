@@ -32,7 +32,7 @@ export class Player {
     const shipSize = ship.size;
 
     //Check ship won't be out of limit
-    if (0 > this.board[x].length - shipSize - 1) return null;
+    if (shipSize > this.board[x].length - y) return null;
     //Check no other ships around
     else {
       //Check left
@@ -61,6 +61,28 @@ export class Player {
 
     this.shipsPlacedCount += 1;
     return `${ship.name} placed`;
+  }
+
+  placeShipsRandom() {
+    const ship = this.ships[this.shipsPlacedCount];
+    const size = 10;
+    const listOfPossibilities = [];
+
+    for (let x = 0; x < size; x++) {
+      const row = [];
+      for (let y = 0; y < size; y++) {
+        row.push([x, y]);
+      }
+      listOfPossibilities.push(row);
+    }
+
+    while (this.shipsPlacedCount < 5) {
+      const num1 = Math.floor(Math.random() * 10);
+      const num2 = Math.floor(Math.random() * 10);
+
+      this.placeShip(num1, num2);
+      listOfPossibilities[num1].splice(num2, 1);
+    }
   }
 }
 
