@@ -11,6 +11,7 @@ export class Player {
       new Ship(2, 'Patrol Boat'),
     ];
     this.shipsPlacedCount = 0;
+    this.attackedPlaces = [];
 
     this.board = this.createBoard();
   }
@@ -51,7 +52,9 @@ export class Player {
           if (this.board[x - 1][y + i].ship) return null;
         }
       }
-      if (this.board[x][y + shipSize - 1].ship) return null; //Right
+      if (y + shipSize <= 9) {
+        if (this.board[x][y + shipSize].ship) return null; //Right
+      }
     }
 
     //Place ship
@@ -64,7 +67,6 @@ export class Player {
   }
 
   placeShipsRandom() {
-    const ship = this.ships[this.shipsPlacedCount];
     const size = 10;
     const listOfPossibilities = [];
 
@@ -83,6 +85,14 @@ export class Player {
       this.placeShip(num1, num2);
       listOfPossibilities[num1].splice(num2, 1);
     }
+  }
+  recieveAttack(x, y) {
+    const attackedNode = this.board[x][y];
+    if (attackedNode.ship) {
+      attackedNode.ship.hit();
+      attackedNode.attacked = 'hit';
+    }
+    attackedNode.attacked = 'miss';
   }
 }
 

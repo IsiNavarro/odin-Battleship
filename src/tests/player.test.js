@@ -39,7 +39,11 @@ it("Player: Can't place if a ship is underneath", () => {
   PlayerExample.placeShip(9, 6);
   expect(PlayerExample.placeShip(8, 6)).toBe(null);
 });
-
 it("Player: Can't place if a ship is in front", () => {
   expect(PlayerExample.placeShip(9, 3)).toBe(null);
+});
+
+it('Player: Can recieve attacks', () => {
+  PlayerExample.recieveAttack(0, 6);
+  expect(PlayerExample.ships[1].hits).toBe(1);
 });
