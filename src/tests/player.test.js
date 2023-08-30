@@ -47,3 +47,7 @@ it('Player: Can recieve attacks', () => {
   PlayerExample.recieveAttack(0, 6);
   expect(PlayerExample.ships[1].hits).toBe(1);
 });
+
+it("Player: Doesn't let attack on the same spot twice", () => {
+  expect(PlayerExample.recieveAttack(0, 6)).toBe(null);
+});

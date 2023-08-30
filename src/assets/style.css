@@ -3,8 +3,10 @@
   --dark-blue: rgb(19, 49, 87);
   --light-blue: rgb(33, 85, 153);
   --lighter-blue: rgb(48, 123, 221);
-  --ship-gray: rgb(150, 150, 150);
+  --ship-gray: rgb(201, 201, 201);
   --aiming-yellow: rgb(255, 187, 86);
+  --red-hit: rgb(255, 64, 64);
+  --white-miss: #ffffff;
 
   --transition-time: 200ms;
 }

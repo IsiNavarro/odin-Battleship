@@ -88,11 +88,13 @@ export class Player {
   }
   recieveAttack(x, y) {
     const attackedNode = this.board[x][y];
-    if (attackedNode.ship) {
-      attackedNode.ship.hit();
-      attackedNode.attacked = 'hit';
+    if (attackedNode.attacked) return null;
+    else {
+      if (attackedNode.ship) {
+        attackedNode.ship.hit();
+        attackedNode.attacked = 'hit';
+      } else attackedNode.attacked = 'miss';
     }
-    attackedNode.attacked = 'miss';
   }
 }
 

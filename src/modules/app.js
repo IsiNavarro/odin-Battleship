@@ -1,9 +1,11 @@
 import css from './app.css';
+import { Player1, Player2 } from '../logic/players';
+import { refreshComputerBoard } from '../logic/refreshBoards';
 
 const app = document.createElement('main');
 
-const turnsDisplay = document.createElement('h3');
-turnsDisplay.textContent = 'Your turn';
+const eventDisplayer = document.createElement('h3');
+eventDisplayer.textContent = 'Choose a target';
 
 const playersContainer = document.createElement('div');
 playersContainer.classList.add('players-container');
@@ -53,7 +55,9 @@ for (let x = 0; x < 10; x++) {
       const x = parseInt(node.dataset.x);
       const y = parseInt(node.dataset.y);
 
-      console.log(x, y);
+      Player2.recieveAttack(x, y);
+      refreshComputerBoard();
+      //Player1.recieveComputerAttack();
       return;
     });
 
@@ -65,7 +69,7 @@ player2.appendChild(player2Grid);
 playersContainer.appendChild(player1);
 playersContainer.appendChild(player2);
 
-app.appendChild(turnsDisplay);
+app.appendChild(eventDisplayer);
 app.appendChild(playersContainer);
 
 export default app;

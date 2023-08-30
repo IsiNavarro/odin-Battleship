@@ -13,12 +13,11 @@ export function refreshPlacingBoard() {
     const y = parseInt(node.dataset.y);
 
     if (Player1.board[x][y].ship) {
-      node.style.backgroundColor = 'rgb(150,150,150)';
+      node.style.backgroundColor = 'rgb(201,201,201)';
     }
   }
 
   refreshPlayer1WhenPlacing();
-  console.log('Refreshing boards...');
 }
 
 function refreshPlayer1WhenPlacing() {
@@ -32,7 +31,29 @@ function refreshPlayer1WhenPlacing() {
     const y = parseInt(node.dataset.y);
 
     if (Player1.board[x][y].ship) {
-      node.style.backgroundColor = 'rgb(150,150,150)';
+      node.style.backgroundColor = 'rgb(201,201,201)';
+    }
+  }
+}
+
+export function refreshComputerBoard() {
+  //Refresh COMPUTER's Board
+  const player2GridChildren = player2Grid.children;
+
+  for (let i = 0; i < player2GridChildren.length; i++) {
+    const node = player2GridChildren[i];
+
+    //Get the data-label
+    const x = parseInt(node.dataset.x);
+    const y = parseInt(node.dataset.y);
+
+    const attack = Player2.board[x][y].attacked;
+    if (attack) {
+      if (attack === 'miss') {
+        node.style.backgroundColor = '#ffffff';
+      } else if (attack === 'hit') {
+        node.style.backgroundColor = 'rgb(255, 64, 64)';
+      }
     }
   }
 }
