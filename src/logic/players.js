@@ -32,7 +32,7 @@ export class Player {
     const shipSize = ship.size;
 
     //Check ship won't be out of limit
-    if (shipSize > this.board[x].length - 1) return null;
+    if (shipSize > this.board[x].length - shipSize - 1) return null;
     //Check no other ships around
     else {
       //Check left
