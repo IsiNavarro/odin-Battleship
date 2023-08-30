@@ -5,6 +5,7 @@ header {
   padding: 10px;
 }
 h1 {
+  font-family: 'Roboto', 'Nunito', sans-serif;
   font-size: 3.5rem;
   color: var(--dark-blue);
   padding: 5px;
