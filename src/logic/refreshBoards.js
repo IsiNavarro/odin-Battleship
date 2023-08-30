@@ -2,7 +2,7 @@ import { shipPlacingContainer as placeBoard } from '../modules/placeYourShips';
 import { player1Grid, player2Grid } from '../modules/app';
 import { Player1, Player2 } from './players';
 
-export function refreshBoards() {
+export function refreshPlacingBoard() {
   //Refresh PLACE YOUR SHIPS Modal
   const placeBoardChildren = placeBoard.children;
   for (let i = 0; i < placeBoardChildren.length; i++) {
@@ -17,6 +17,11 @@ export function refreshBoards() {
     }
   }
 
+  refreshPlayer1();
+  console.log('Refreshing boards...');
+}
+
+function refreshPlayer1() {
   //Refresh YOUR board
   const player1GridChildren = player1Grid.children;
   for (let i = 0; i < player1GridChildren.length; i++) {
@@ -30,5 +35,4 @@ export function refreshBoards() {
       node.style.backgroundColor = 'rgb(150,150,150)';
     }
   }
-  console.log('Refreshing boards...');
 }

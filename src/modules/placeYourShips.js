@@ -1,5 +1,5 @@
 import css from './placeYourShips.css';
-import { refreshBoards } from '../logic/refreshBoards';
+import { refreshPlacingBoard } from '../logic/refreshBoards';
 import { Player1 } from '../logic/players';
 
 const shipPlacing = document.createElement('div');
@@ -27,7 +27,7 @@ for (let x = 0; x < 10; x++) {
       const y = parseInt(node.dataset.y);
 
       Player1.placeShip(x, y);
-      refreshBoards();
+      refreshPlacingBoard();
     });
     shipPlacingContainer.appendChild(node);
   }
