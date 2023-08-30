@@ -15,7 +15,7 @@ player1Display.classList.add('player-display');
 player1Display.textContent = 'YOU';
 player1.appendChild(player1Display);
 
-const player1Grid = document.createElement('div');
+export const player1Grid = document.createElement('div');
 player1Grid.classList.add('player-one-grid');
 for (let x = 0; x < 10; x++) {
   for (let y = 0; y < 10; y++) {
@@ -23,8 +23,8 @@ for (let x = 0; x < 10; x++) {
     node.classList.add('player-one-grid-node');
 
     //Giving index to each node
-    node.setAttribute('data-one-x', x);
-    node.setAttribute('data-one-y', y);
+    node.setAttribute('data-x', x);
+    node.setAttribute('data-y', y);
 
     player1Grid.appendChild(node);
   }
@@ -38,7 +38,7 @@ player2Display.classList.add('player-display');
 player2Display.textContent = 'Computer';
 player2.appendChild(player2Display);
 
-const player2Grid = document.createElement('div');
+export const player2Grid = document.createElement('div');
 player2Grid.classList.add('player-two-grid');
 for (let x = 0; x < 10; x++) {
   for (let y = 0; y < 10; y++) {
@@ -46,8 +46,8 @@ for (let x = 0; x < 10; x++) {
     node.classList.add('player-two-grid-node');
 
     //Giving index to each node
-    node.setAttribute('data-two-x', x);
-    node.setAttribute('data-two-y', y);
+    node.setAttribute('data-x', x);
+    node.setAttribute('data-y', y);
 
     player2Grid.appendChild(node);
   }
