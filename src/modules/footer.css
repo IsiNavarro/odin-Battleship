@@ -1,0 +1,19 @@
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.footer-text-content {
+  font-size: 1.3rem;
+  color: var(--dark-blue);
+}
+.footer-text-content > a {
+  color: inherit;
+}

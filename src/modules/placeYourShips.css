@@ -1,0 +1,49 @@
+.ship-placing {
+  background-color: white;
+  padding: 40px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: fit-content;
+  gap: 20px;
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 6px rgba(36, 20, 255, 0.25);
+  font-weight: bold;
+  color: var(--dark-blue);
+}
+.ship-placing-h2 {
+  font-size: 3rem;
+}
+.ship-placing-text-container {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.4rem;
+}
+
+.ship-placing-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  background-color: var(--lighter-blue);
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.ship-placing-node {
+  height: 30px;
+  width: 30px;
+  background-color: var(--dark-blue);
+  border-radius: 5px;
+  transition: var(--transition-time);
+}
+.ship-placing-node:hover {
+  cursor: pointer;
+  background-color: var(--ship-gray);
+  transform: scale(90%);
+  transition: var(--transition-time);
+}
