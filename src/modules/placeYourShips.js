@@ -28,6 +28,11 @@ for (let x = 0; x < 10; x++) {
 
       Player1.placeShip(x, y);
       refreshPlacingBoard();
+
+      if (Player1.shipsPlacedCount >= 5) {
+        shipPlacing.style.display = 'none';
+        return;
+      }
     });
     shipPlacingContainer.appendChild(node);
   }
