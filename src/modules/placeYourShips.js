@@ -1,6 +1,7 @@
 import css from './placeYourShips.css';
 import { refreshPlacingBoard } from '../logic/refreshBoards';
 import { Player1 } from '../logic/players';
+import app from './app';
 
 const shipPlacing = document.createElement('div');
 shipPlacing.classList.add('ship-placing');
@@ -31,6 +32,9 @@ for (let x = 0; x < 10; x++) {
 
       if (Player1.shipsPlacedCount >= 5) {
         shipPlacing.style.display = 'none';
+        app.style.display = 'flex';
+
+        //HERE WE HAVE TO START THE GAME CONTROLLER
         return;
       }
     });
