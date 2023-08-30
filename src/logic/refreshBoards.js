@@ -17,11 +17,11 @@ export function refreshPlacingBoard() {
     }
   }
 
-  refreshPlayer1();
+  refreshPlayer1WhenPlacing();
   console.log('Refreshing boards...');
 }
 
-function refreshPlayer1() {
+function refreshPlayer1WhenPlacing() {
   //Refresh YOUR board
   const player1GridChildren = player1Grid.children;
   for (let i = 0; i < player1GridChildren.length; i++) {
