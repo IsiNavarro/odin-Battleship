@@ -49,6 +49,14 @@ for (let x = 0; x < 10; x++) {
     node.setAttribute('data-x', x);
     node.setAttribute('data-y', y);
 
+    node.addEventListener('click', () => {
+      const x = parseInt(node.dataset.x);
+      const y = parseInt(node.dataset.y);
+
+      console.log(x, y);
+      return;
+    });
+
     player2Grid.appendChild(node);
   }
 }
