@@ -75,3 +75,9 @@ h4 {
   border-radius: 5px;
   transition: var(--transition-time);
 }
+.player-two-grid-node:hover {
+  cursor: pointer;
+  background-color: var(--aiming-yellow);
+  transform: scale(90%);
+  transition: var(--transition-time);
+}
