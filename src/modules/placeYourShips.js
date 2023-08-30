@@ -35,7 +35,6 @@ for (let x = 0; x < 10; x++) {
         app.style.display = 'flex';
         Player2.placeShipsRandom();
 
-        //HERE WE HAVE TO START THE GAME CONTROLLER
         return;
       }
     });
