@@ -1,4 +1,6 @@
 import css from './placeYourShips.css';
+import { refreshBoards } from '../logic/refreshBoards';
+import { Player1 } from '../logic/players';
 
 const shipPlacing = document.createElement('div');
 shipPlacing.classList.add('ship-placing');
@@ -20,7 +22,13 @@ for (let x = 0; x < 10; x++) {
     node.setAttribute('data-y', y);
 
     //Placing a ship when clicking a node
-    node.addEventListener('click', () => {});
+    node.addEventListener('click', () => {
+      const x = parseInt(node.dataset.x);
+      const y = parseInt(node.dataset.y);
+
+      Player1.placeShip(x, y);
+      refreshBoards();
+    });
     shipPlacingContainer.appendChild(node);
   }
 }
@@ -28,3 +36,4 @@ for (let x = 0; x < 10; x++) {
 shipPlacing.appendChild(shipPlacingContainer);
 
 export default shipPlacing;
+export { shipPlacingContainer };
