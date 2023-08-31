@@ -3,7 +3,7 @@ import { Player } from '../logic/players';
 const PlayerExample = new Player();
 
 it('Player: Ships are there', () => {
-  expect(PlayerExample.ships[0].name).toBe('Carrier');
+  expect(PlayerExample.ships[0].name).toBe('CARRIER');
 });
 
 it('Player: Board works', () => {
@@ -12,11 +12,11 @@ it('Player: Board works', () => {
 
 it('Player: Place a ship', () => {
   PlayerExample.placeShip(0, 0);
-  expect(PlayerExample.board[0][0].ship.name).toBe('Carrier');
+  expect(PlayerExample.board[0][0].ship.name).toBe('CARRIER');
 });
 
 it('Player: Ship properly placed', () => {
-  expect(PlayerExample.board[0][4].ship.name).toBe('Carrier');
+  expect(PlayerExample.board[0][4].ship.name).toBe('CARRIER');
 });
 
 it("Player: Can't place if a ship is on the way", () => {
@@ -32,7 +32,7 @@ it("Player: Can't place if a ship is right behind", () => {
 });
 
 it('Player: Can place on the very next one', () => {
-  expect(PlayerExample.placeShip(0, 6)).toBe('Battleship placed');
+  expect(PlayerExample.placeShip(0, 6)).toBe('BATTLESHIP placed');
 });
 
 it("Player: Can't place if a ship is underneath", () => {

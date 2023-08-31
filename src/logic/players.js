@@ -4,11 +4,11 @@ import { Node } from './node';
 export class Player {
   constructor() {
     this.ships = [
-      new Ship(5, 'Carrier'),
-      new Ship(4, 'Battleship'),
-      new Ship(3, 'Destroyer'),
-      new Ship(3, 'Submarine'),
-      new Ship(2, 'Patrol Boat'),
+      new Ship(5, 'CARRIER'),
+      new Ship(4, 'BATTLESHIP'),
+      new Ship(3, 'DESTROYER'),
+      new Ship(3, 'SUBMARINE'),
+      new Ship(2, 'PATROL BOAT'),
     ];
     this.shipsPlacedCount = 0;
     this.attackedPlaces = [];
@@ -93,7 +93,13 @@ export class Player {
       if (attackedNode.ship) {
         attackedNode.ship.hit();
         attackedNode.attacked = 'hit';
-      } else attackedNode.attacked = 'miss';
+        if (attackedNode.ship.sunk)
+          return `Enemy ${attackedNode.ship.name} has been sunk!`;
+        else return `Enemy ${attackedNode.ship.name} was hit!`;
+      } else {
+        attackedNode.attacked = 'miss';
+        return `The attack missed`;
+      }
     }
   }
 }

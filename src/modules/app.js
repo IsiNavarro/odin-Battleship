@@ -55,9 +55,10 @@ for (let x = 0; x < 10; x++) {
       const x = parseInt(node.dataset.x);
       const y = parseInt(node.dataset.y);
 
-      Player2.recieveAttack(x, y);
+      const message = Player2.recieveAttack(x, y);
       refreshComputerBoard();
       //Player1.recieveComputerAttack();
+      eventDisplayer.textContent = message;
       return;
     });
 
