@@ -51,27 +51,7 @@ for (let x = 0; x < 10; x++) {
     node.setAttribute('data-x', x);
     node.setAttribute('data-y', y);
 
-    node.addEventListener('click', () => {
-      const x = parseInt(node.dataset.x);
-      const y = parseInt(node.dataset.y);
-
-      const message = Player2.recieveAttack(x, y);
-      refreshComputerBoard();
-      eventDisplayer.textContent = message;
-
-      if (Player2.isGameEnded()) {
-        eventDisplayer.textContent = 'Enemy float completely sunk. YOU WIN!';
-        return;
-      }
-
-      //Wait 1.5 seconds between attacks??
-      //Player1.recieveComputerAttack();
-      /*if (Player1.isGameEnded()) {
-        eventDisplayer.textContent = 'Game over... Computer wins';
-        GameFinished();
-        return;
-      }*/
-    });
+    node.addEventListener('click', listener);
 
     player2Grid.appendChild(node);
   }
@@ -85,3 +65,34 @@ app.appendChild(eventDisplayer);
 app.appendChild(playersContainer);
 
 export default app;
+
+function listener() {
+  const x = parseInt(this.dataset.x);
+  const y = parseInt(this.dataset.y);
+
+  const message = Player2.recieveAttack(x, y);
+  refreshComputerBoard();
+  eventDisplayer.textContent = message;
+
+  if (Player2.isGameEnded()) {
+    eventDisplayer.textContent = 'Enemy fleet completely sunk. YOU WIN!';
+    GridRemoveListener();
+    return;
+  }
+
+  //Wait 1.5 seconds between attacks??
+  //Player1.recieveComputerAttack();
+  /*if (Player1.isGameEnded()) {
+        eventDisplayer.textContent = 'Game over... Computer wins';
+        GridRemoveListener();
+        return;
+      }*/
+}
+
+function GridRemoveListener() {
+  const player2GridChildren = player2Grid.children;
+  for (let i = 0; i < player2GridChildren.length; i++) {
+    const node = player2GridChildren[i];
+    node.removeEventListener('click', listener);
+  }
+}
