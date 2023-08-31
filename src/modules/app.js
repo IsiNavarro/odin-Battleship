@@ -86,11 +86,11 @@ function listener() {
   //Wait 1.5 seconds between attacks??
   Player1.huntAndTarget();
   refreshPlayer1Board();
-  /*if (Player1.isGameEnded()) {
-        eventDisplayer.textContent = 'Game over... Computer wins';
-        GridRemoveListener();
-        return;
-      }*/
+  if (Player1.isGameEnded()) {
+    eventDisplayer.textContent = 'Game over... Computer wins';
+    GridRemoveListener();
+    return;
+  }
 }
 
 function GridRemoveListener() {
