@@ -51,3 +51,14 @@ it('Player: Can recieve attacks', () => {
 it("Player: Doesn't let attack on the same spot twice", () => {
   expect(PlayerExample.recieveAttack(0, 6)).toBe(null);
 });
+
+it('Player: Checks Game not ended', () => {
+  expect(PlayerExample.isGameEnded()).toBe(false);
+});
+
+it('Player: checks Game ended', () => {
+  PlayerExample.ships.forEach((ship) => {
+    ship.sunk = true;
+  });
+  expect(PlayerExample.isGameEnded()).toBe(true);
+});

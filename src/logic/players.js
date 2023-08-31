@@ -11,7 +11,6 @@ export class Player {
       new Ship(2, 'PATROL BOAT'),
     ];
     this.shipsPlacedCount = 0;
-    this.attackedPlaces = [];
 
     this.board = this.createBoard();
   }
@@ -101,6 +100,12 @@ export class Player {
         return `The attack missed`;
       }
     }
+  }
+  isGameEnded() {
+    for (let i = 0; i < this.ships.length; i++) {
+      if (!this.ships[i].sunk) return false;
+    }
+    return true;
   }
 }
 
