@@ -15,6 +15,15 @@ export class Player {
     this.board = this.createBoard();
 
     this.huntNtargetMode = 'hunt';
+    this.lastAttackX = 0;
+    this.lastAttackY = 0;
+
+    this.nextX = 0;
+    this.nextY = 0;
+
+    this.nextAttack = 'left';
+
+    this.response = '';
   }
 
   createBoard(size = 10) {
@@ -68,23 +77,11 @@ export class Player {
   }
 
   placeShipsRandom() {
-    const size = 10;
-    const listOfPossibilities = [];
-
-    for (let x = 0; x < size; x++) {
-      const row = [];
-      for (let y = 0; y < size; y++) {
-        row.push([x, y]);
-      }
-      listOfPossibilities.push(row);
-    }
-
     while (this.shipsPlacedCount < 5) {
       const num1 = Math.floor(Math.random() * 10);
       const num2 = Math.floor(Math.random() * 10);
 
       this.placeShip(num1, num2);
-      listOfPossibilities[num1].splice(num2, 1);
     }
   }
   recieveAttack(x, y) {
@@ -104,12 +101,65 @@ export class Player {
     }
   }
   huntAndTarget() {
+    if (!this.response) this.response = '';
+    if (this.response.endsWith('sunk!')) {
+      this.huntNtargetMode = 'hunt';
+      this.nextAttack = 'left';
+    }
+
     if (this.huntNtargetMode === 'hunt') {
-      const message = this.recieveAttack(4, 5);
-      console.log(message);
+      do {
+        this.lastAttackX = Math.floor(Math.random() * 10);
+        this.lastAttackY = Math.floor(Math.random() * 10);
+
+        this.response = this.recieveAttack(this.lastAttackX, this.lastAttackY);
+      } while (!this.response);
+      if (this.response.endsWith('hit!')) {
+        this.huntNtargetMode = 'target';
+        this.nextX = this.lastAttackX;
+        this.nextY = this.lastAttackY - 1;
+      }
       return;
-    } else if (this.huntNtargetMode === 'target') {
-      return;
+    }
+    if (this.huntNtargetMode === 'target') {
+      if (this.nextAttack === 'left') {
+        if (this.nextY >= 0) {
+          this.response = this.recieveAttack(this.nextX, this.nextY);
+          console.log(this.response);
+          //If attacking on an attacked node
+          if (!this.response) {
+            this.nextY = this.lastAttackY + 1;
+            this.nextAttack = 'right';
+            return this.huntAndTarget();
+          }
+          if (this.response.endsWith('hit!')) {
+            this.nextY--;
+            return;
+          }
+          if (this.response.endsWith('missed')) {
+            this.nextY = this.lastAttackY + 1;
+            this.nextAttack = 'right';
+            return;
+          }
+        } //If border of grid
+        else {
+          this.nextY = this.lastAttackY + 1;
+          this.nextAttack = 'right';
+          return this.huntAndTarget();
+        }
+      }
+      if (this.nextAttack === 'right') {
+        if (this.nextY <= 9) {
+          this.response = this.recieveAttack(this.nextX, this.nextY);
+
+          if (this.response.endsWith('hit!')) {
+            this.nextY++;
+            console.log(this.nextY);
+            return;
+          }
+        }
+        return;
+      }
     }
   }
   isGameEnded() {

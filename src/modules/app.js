@@ -75,7 +75,6 @@ function listener() {
 
   const message = Player2.recieveAttack(x, y);
   refreshComputerBoard();
-  eventDisplayer.textContent = message;
 
   if (Player2.isGameEnded()) {
     eventDisplayer.textContent = 'Enemy fleet completely sunk. YOU WIN!';
@@ -83,13 +82,17 @@ function listener() {
     return;
   }
 
-  //Wait 1.5 seconds between attacks??
-  Player1.huntAndTarget();
-  refreshPlayer1Board();
-  if (Player1.isGameEnded()) {
-    eventDisplayer.textContent = 'Game over... Computer wins';
-    GridRemoveListener();
-    return;
+  if (message) {
+    eventDisplayer.textContent = message;
+
+    //Wait 1.5 seconds between attacks??
+    Player1.huntAndTarget();
+    refreshPlayer1Board();
+    if (Player1.isGameEnded()) {
+      eventDisplayer.textContent = 'Game over... Computer wins';
+      GridRemoveListener();
+      return;
+    }
   }
 }
 
