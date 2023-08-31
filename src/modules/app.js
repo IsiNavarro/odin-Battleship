@@ -1,6 +1,9 @@
 import css from './app.css';
 import { Player1, Player2 } from '../logic/players';
-import { refreshComputerBoard } from '../logic/refreshBoards';
+import {
+  refreshComputerBoard,
+  refreshPlayer1Board,
+} from '../logic/refreshBoards';
 
 const app = document.createElement('main');
 
@@ -81,7 +84,8 @@ function listener() {
   }
 
   //Wait 1.5 seconds between attacks??
-  //Player1.recieveComputerAttack();
+  Player1.huntAndTarget();
+  refreshPlayer1Board();
   /*if (Player1.isGameEnded()) {
         eventDisplayer.textContent = 'Game over... Computer wins';
         GridRemoveListener();

@@ -13,6 +13,8 @@ export class Player {
     this.shipsPlacedCount = 0;
 
     this.board = this.createBoard();
+
+    this.huntNtargetMode = 'hunt';
   }
 
   createBoard(size = 10) {
@@ -99,6 +101,15 @@ export class Player {
         attackedNode.attacked = 'miss';
         return `The attack missed`;
       }
+    }
+  }
+  huntAndTarget() {
+    if (this.huntNtargetMode === 'hunt') {
+      const message = this.recieveAttack(4, 5);
+      console.log(message);
+      return;
+    } else if (this.huntNtargetMode === 'target') {
+      return;
     }
   }
   isGameEnded() {

@@ -17,10 +17,10 @@ export function refreshPlacingBoard() {
     }
   }
 
-  refreshPlayer1WhenPlacing();
+  refreshPlayer1Board();
 }
 
-function refreshPlayer1WhenPlacing() {
+export function refreshPlayer1Board() {
   //Refresh YOUR board
   const player1GridChildren = player1Grid.children;
   for (let i = 0; i < player1GridChildren.length; i++) {
@@ -33,6 +33,10 @@ function refreshPlayer1WhenPlacing() {
     if (Player1.board[x][y].ship) {
       node.style.backgroundColor = 'rgb(201,201,201)';
     }
+    if (Player1.board[x][y].attacked === 'miss')
+      node.style.backgroundColor = '#ffffff';
+    if (Player1.board[x][y].attacked === 'hit')
+      node.style.backgroundColor = 'rgb(255,64,64)';
   }
 }
 
