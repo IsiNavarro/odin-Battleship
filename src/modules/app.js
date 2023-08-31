@@ -57,9 +57,20 @@ for (let x = 0; x < 10; x++) {
 
       const message = Player2.recieveAttack(x, y);
       refreshComputerBoard();
-      //Player1.recieveComputerAttack();
       eventDisplayer.textContent = message;
-      return;
+
+      if (Player2.isGameEnded()) {
+        eventDisplayer.textContent = 'Enemy float completely sunk. YOU WIN!';
+        return;
+      }
+
+      //Wait 1.5 seconds between attacks??
+      //Player1.recieveComputerAttack();
+      /*if (Player1.isGameEnded()) {
+        eventDisplayer.textContent = 'Game over... Computer wins';
+        GameFinished();
+        return;
+      }*/
     });
 
     player2Grid.appendChild(node);
